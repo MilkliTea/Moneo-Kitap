@@ -1,5 +1,5 @@
 
-@extends('products.layout')
+@extends('books.layout')
      
      @section('contenty')
          <div class="row">
@@ -8,7 +8,7 @@
                      <h2>Kitap düzenle</h2>
                  </div>
                  <div class="pull-right">
-                     <a class="btn btn-primary" href="{{ route('products.index') }}"> geri</a>
+                     <a class="btn btn-primary" href="{{ route('books.index') }}"> geri</a>
                  </div>
              </div>
          </div>
@@ -24,7 +24,7 @@
              </div>
          @endif
          
-         <form action="{{ route('products.update',$product->id) }}" method="POST" enctype="multipart/form-data"> 
+         <form action="{{ route('books.update',$book->id) }}" method="POST" enctype="multipart/form-data"> 
              @csrf
              @method('PUT')
           
@@ -32,26 +32,26 @@
                  <div class="col-xs-12 col-sm-12 col-md-12">
                      <div class="form-group">
                          <strong>Adı:</strong>
-                         <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="ad">
+                         <input type="text" name="name" value="{{ $book->name }}" class="form-control" placeholder="ad">
                      </div>
                  </div>
                  <div class="col-xs-12 col-sm-12 col-md-12">
                      <div class="form-group">
                          <strong>Yazarı:</strong>
-                         <textarea class="form-control" style="height:150px" name="detail" placeholder="Yazar">{{ $product->detail }}</textarea>
+                         <textarea class="form-control" style="height:150px" name="author" placeholder="Yazar">{{ $book->author }}</textarea>
                      </div>
                  </div>
                  <div class="col-xs-12 col-sm-12 col-md-12">
                      <div class="form-group">
                          <strong>ISBN:</strong>
-                         <input type="text" name="no" value="{{ $product->no }}" class="form-control" placeholder="ISBN">
+                         <input type="text" name="no" value="{{ $book->no }}" class="form-control" placeholder="ISBN">
                      </div>
                  </div>
                  <div class="col-xs-12 col-sm-12 col-md-12">
                      <div class="form-group">
                          <strong>Resim:</strong>
                          <input type="file" name="image" class="form-control" placeholder="rESİM">
-                         <img src="/image/{{ $product->image }}" width="300px">
+                         <img src="/image/{{ $book->image }}" width="300px">
                      </div>
                  </div>
                  <div class="col-xs-12 col-sm-12 col-md-12 text-center">

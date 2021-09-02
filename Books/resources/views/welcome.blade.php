@@ -1,12 +1,12 @@
 
-@extends('products.layout')
+@extends('books.layout')
 
 @section('contenty')
 @if (Route::has('login'))
 
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('products') }}" class="text-sm text-gray-700 underline"> Kitapları Düzenlemek için tıklayınız</a>
+                        <a href="{{ url('books') }}" class="text-sm text-gray-700 underline"> Kitapları Düzenlemek için tıklayınız</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
@@ -36,13 +36,13 @@
             <th>ISBN</th>
            
         </tr>
-        @foreach ($products as $product)
+        @foreach ($books as $book)
         <tr>
             
-            <td><img src="/image/{{ $product->image }}" width="200px"></td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
-            <td>{{ $product->no }}</td>
+            <td><img src="/image/{{ $book->image }}" width="200px"></td>
+            <td>{{ $book->name }}</td>
+            <td>{{ $book->author }}</td>
+            <td>{{ $book->no }}</td>
             </td>
         </tr>
         @endforeach

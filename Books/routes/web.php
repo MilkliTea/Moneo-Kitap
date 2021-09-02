@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\Sayfacek;
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ use App\Http\Controllers\Sayfacek;
 */
 
   
-Route::resource('products', ProductController::class);
+Route::resource('books', BookController::class);
 Route::get('welcome', [Sayfacek::class,'listele']);
 
 

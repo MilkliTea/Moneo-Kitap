@@ -1,5 +1,5 @@
 
-@extends('products.layout')
+@extends('books.layout')
   
   @section('contenty')
   <div class="row">
@@ -8,7 +8,7 @@
               <h2>Kitap ekle</h2>
           </div>
           <div class="pull-right">
-              <a class="btn btn-primary" href="{{ route('products.index') }}"> Geri</a>
+              <a class="btn btn-primary" href="{{ route('books.index') }}"> Geri</a>
           </div>
       </div>
   </div>
@@ -24,7 +24,7 @@
       </div>
   @endif
        
-  <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       
        <div class="row">
@@ -38,7 +38,7 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
                   <strong>Yazar:</strong>
-                  <textarea class="form-control" style="height:150px" name="detail" placeholder="Yazar"></textarea>
+                  <textarea class="form-control" style="height:150px" name="author" placeholder="Yazar"></textarea>
               </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">

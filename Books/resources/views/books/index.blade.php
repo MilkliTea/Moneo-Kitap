@@ -1,5 +1,5 @@
 
-@extends('products.layout')
+@extends('books.layout')
 
      @section('contenty')
 
@@ -24,7 +24,7 @@
                      <h1>Kitap</h1>
                  </div>
                  <div class="pull-right">
-                     <a class="btn btn-success" href="{{ route('products.create') }}"> Kitap ekle</a>
+                     <a class="btn btn-success" href="{{ route('books.create') }}"> Kitap ekle</a>
                  </div>
              </div>
          </div>
@@ -44,19 +44,19 @@
                  <th>ISBN</th>
                  <th width="280px">Düzenle</th>
              </tr>
-             @foreach ($products as $product)
+             @foreach ($books as $book)
              <tr>
                  <td>{{ ++$i }}</td>
-                 <td><img src="/image/{{ $product->image }}" width="100px"></td>
-                 <td>{{ $product->name }}</td>
-                 <td>{{ $product->detail }}</td>
-                 <td>{{ $product->no }}</td>
+                 <td><img src="/image/{{ $book->image }}" width="100px"></td>
+                 <td>{{ $book->name }}</td>
+                 <td>{{ $book->author }}</td>
+                 <td>{{ $book->no }}</td>
                  <td>
-                     <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                     <form action="{{ route('books.destroy',$book->id) }}" method="POST">
           
-                         <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">göster</a>
+                         <a class="btn btn-info" href="{{ route('books.show',$book->id) }}">göster</a>
            
-                         <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">düzenle</a>
+                         <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">düzenle</a>
           
                          @csrf
                          @method('DELETE')
@@ -67,7 +67,7 @@
              </tr>
              @endforeach
          </table>
-         <div width="100px" height="100px">  {!! $products->links() !!}</div>    
+         <div width="100px" height="100px">  {!! $books->links() !!}</div>    
        
              
      @endsection 

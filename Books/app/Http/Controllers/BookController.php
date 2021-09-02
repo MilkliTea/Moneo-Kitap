@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
   
-use App\Models\Product;
+use App\Models\Book;
 use Illuminate\Http\Request;
   
-class ProductController extends Controller
+class BookController extends Controller
 {   
        /**
      * Display a listing of the resource.
@@ -22,9 +22,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $books = Book::latest()->paginate(5);
     
-        return view('products.index',compact('products'))
+        return view('books.index',compact('books'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('books.create');
     }
     
     /**
@@ -48,7 +48,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'author' => 'required',
              'no' =>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -62,46 +62,46 @@ class ProductController extends Controller
             $input['image'] = "$profileImage";
         }
     
-        Product::create($input);
+        Book::create($input);
      
-        return redirect()->route('products.index')
+        return redirect()->route('books.index')
                         ->with('success','Kitap Oluşturuldu.');
     }
      
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Book $book)
     {
-        return view('products.show',compact('product'));
+        return view('books.show',compact('book'));
     }
      
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Book $book)
     {
-        return view('products.edit',compact('product'));
+        return view('books.edit',compact('book'));
     }
     
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Book $book)
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'author' => 'required',
             'no' =>'required'
         ]);
   
@@ -116,23 +116,23 @@ class ProductController extends Controller
             unset($input['image']);
         }
           
-        $product->update($input);
+        $book->update($input);
     
-        return redirect()->route('products.index')
+        return redirect()->route('books.index')
                         ->with('success','Kitap düzeltildi');
     }
   
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Book $book)
     {
-        $product->delete();
+        $book->delete();
      
-        return redirect()->route('products.index')
+        return redirect()->route('books.index')
                         ->with('success','Kitap Silindi');
     }
 }
