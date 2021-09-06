@@ -37,7 +37,7 @@
           
          <table class="table table-bordered">
              <tr>
-                 <th>ISBN</th>
+                 <th>No</th>
                  <th>Resim</th>
                  <th>Kitap adı</th>
                  <th>Kitap yazarı</th>
@@ -46,7 +46,7 @@
              </tr>
              @foreach ($books as $book)
              <tr>
-                 <td>{{ ++$i }}</td>
+                 <td>{{ $book->id}}</td>
                  <td><img src="/image/{{ $book->image }}" width="100px"></td>
                  <td>{{ $book->name }}</td>
                  <td>{{ $book->author }}</td>
@@ -67,7 +67,7 @@
              </tr>
              @endforeach
          </table>
-         <div width="100px" height="100px">  {!! $books->links() !!}</div>    
+           
        
              
      @endsection 

@@ -23,10 +23,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::latest()->paginate(5);
+        $books = Book::all();
 
-        return view('books.index', compact('books'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('books.index', compact('books'));
+           
     }
 
     /**
